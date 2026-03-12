@@ -1,0 +1,420 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 3rem;
+  background:
+    radial-gradient(circle at top left, rgba(33, 150, 243, 0.28), transparent 30%),
+    radial-gradient(circle at top right, rgba(33, 150, 243, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(15, 15, 15, 0.98), rgba(26, 26, 26, 0.98));
+}
+
+.heroBackdrop {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 92%);
+}
+
+.heroInner {
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.15fr);
+}
+
+.heroCopy h1 {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.heroLogo {
+  display: block;
+  width: min(240px, 70vw);
+  margin-bottom: 1.2rem;
+}
+
+.eyebrow,
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--brand-300);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+}
+
+.heroLead {
+  max-width: 34rem;
+  margin-bottom: 1.75rem;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.secondaryAction {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #2a2a2a;
+}
+
+.statGrid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 36rem;
+  margin: 0;
+}
+
+.statGrid div {
+  position: relative;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #2a2a2a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.statGrid div::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 8px 0 0 8px;
+  background: var(--brand-500);
+}
+
+.statGrid dt {
+  margin-bottom: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.statGrid dd {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.heroPanel {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 760px);
+  justify-self: end;
+}
+
+.heroFrame {
+  position: relative;
+  padding: 0.5rem 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: #1a1a1a;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+.heroFrame::before {
+  content: '';
+  display: block;
+  height: 12px;
+  margin: 0 0.4rem 0.5rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, #ff6b6b 0 36%, transparent 40%) 0 50% / 12px 12px no-repeat,
+    radial-gradient(circle, #f7c948 0 36%, transparent 40%) 18px 50% / 12px 12px no-repeat,
+    radial-gradient(circle, #51cf66 0 36%, transparent 40%) 36px 50% / 12px 12px no-repeat;
+}
+
+.heroCarousel {
+  position: relative;
+  aspect-ratio: 16 / 7.7;
+  overflow: hidden;
+  background: #0f141a;
+}
+
+.heroSlide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition:
+    opacity 0.7s ease,
+    transform 1.6s ease;
+}
+
+.heroSlideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+}
+
+.heroMeta strong {
+  color: #ffffff;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+}
+
+.heroIndicators {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.heroIndicator {
+  width: 0.72rem;
+  height: 0.72rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    width 0.2s ease;
+}
+
+.heroIndicator:hover {
+  background: rgba(255, 255, 255, 0.42);
+  transform: translateY(-1px);
+}
+
+.heroIndicatorActive {
+  width: 1.7rem;
+  background: var(--brand-500);
+}
+
+.heroCallout {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--brand-500);
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.heroCallout span {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.76;
+}
+
+.heroCallout strong {
+  font-size: 1.05rem;
+}
+
+.heroCallout a {
+  color: var(--brand-300);
+  font-weight: 700;
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.sectionHeading {
+  max-width: 48rem;
+  margin-bottom: 1.75rem;
+}
+
+.sectionHeading h2,
+.workflowPanel h2,
+.apiPanel h2 {
+  margin-bottom: 0;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.cardGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.featureCard {
+  position: relative;
+  min-height: 220px;
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #2a2a2a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 8px 0 0 8px;
+  background: var(--brand-500);
+}
+
+.featureCard:hover {
+  border-color: rgba(33, 150, 243, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.12);
+}
+
+.featureCard h3 {
+  margin-bottom: 0.7rem;
+  color: #ffffff;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.featureCard p {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+.workflowSection {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.workflowPanel,
+.apiPanel {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  padding: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #232323;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.workflowList {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+.gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.galleryCard {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #2a2a2a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.galleryCard:hover {
+  border-color: rgba(33, 150, 243, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.12);
+}
+
+.galleryCard img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.galleryCard figcaption {
+  padding: 0.95rem 1rem 1.1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.apiSection {
+  padding-top: 0;
+}
+
+.apiActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding-top: 4rem;
+  }
+
+  .heroInner,
+  .workflowPanel,
+  .apiPanel,
+  .cardGrid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .statGrid {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroCopy h1 {
+    font-size: clamp(2.6rem, 18vw, 4rem);
+  }
+
+  .heroMeta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .featureCard,
+  .workflowPanel,
+  .apiPanel,
+  .galleryCard {
+    border-radius: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroSlide,
+  .heroIndicator {
+    transition: none;
+    transform: none;
+  }
+}
