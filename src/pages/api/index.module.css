@@ -133,6 +133,37 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.swaggerShell :global(.swagger-ui .info) {
+  margin: unset;
+  padding: 20px 0;
+}
+
+.swaggerShell :global(.swagger-ui .renderedMarkdown code) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .scheme-container) {
+  margin: 30px;
+  padding: unset;
+  border: unset;
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-section-header) {
+  background: hsla(0,0%,100%,.1);
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-section-header h4) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .btn) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .opblock-description-wrapper p) {
+  color: #fff;
+}
+
 .swaggerShell :global(.swagger-ui .info),
 .swaggerShell :global(.swagger-ui .opblock),
 .swaggerShell :global(.swagger-ui .responses-inner),

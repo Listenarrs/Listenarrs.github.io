@@ -64,12 +64,21 @@ const config = {
           },
           {
             href: '/api/',
-            label: 'API UI',
+            label: 'API',
             position: 'left',
           },
           {
             href: 'https://github.com/Listenarrs/Listenarr',
+            className: 'header-github-link',
             label: 'GitHub',
+            'aria-label': 'GitHub repository',
+            position: 'right',
+          },
+          {
+            href: 'https://discord.gg/CwZ2Sqp9NF',
+            className: 'header-discord-link',
+            label: 'Discord',
+            'aria-label': 'Discord server',
             position: 'right',
           },
         ],
@@ -89,7 +98,7 @@ const config = {
                 to: '/docs/getting-started/installation/',
               },
               {
-                label: 'API UI',
+                label: 'API',
                 href: '/api/',
               },
             ],

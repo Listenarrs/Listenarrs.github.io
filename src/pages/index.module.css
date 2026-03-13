@@ -70,6 +70,18 @@
   background: #2a2a2a;
 }
 
+.githubAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.githubAction svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
 .statGrid {
   display: grid;
   gap: 0.9rem;
@@ -147,6 +159,22 @@
   background: #0f141a;
 }
 
+.heroCarouselButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.heroCarouselButton:focus-visible {
+  outline: 2px solid var(--brand-300);
+  outline-offset: -2px;
+}
+
 .heroSlide {
   position: absolute;
   inset: 0;
@@ -164,6 +192,31 @@
 .heroSlideActive {
   opacity: 1;
   transform: scale(1);
+}
+
+.heroExpandHint {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  padding: 0.38rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(15, 20, 26, 0.72);
+  color: #ffffff;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.heroCarouselButton:hover .heroExpandHint,
+.heroCarouselButton:focus-visible .heroExpandHint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .heroMeta {
@@ -188,17 +241,29 @@
 }
 
 .heroIndicator {
+  position: relative;
   width: 0.72rem;
   height: 0.72rem;
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   transition:
     background 0.2s ease,
     transform 0.2s ease,
     width 0.2s ease;
+}
+
+.heroIndicator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--brand-500);
+  transform: scaleX(var(--hero-progress, 0));
+  transform-origin: left center;
 }
 
 .heroIndicator:hover {
@@ -208,7 +273,82 @@
 
 .heroIndicatorActive {
   width: 1.7rem;
-  background: var(--brand-500);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.heroLightboxBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(8, 12, 18, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.heroLightbox {
+  position: relative;
+  width: min(1280px, 100%);
+  max-height: calc(100vh - 4rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #11161d;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.heroLightboxClose {
+position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(15, 20, 26, 0.82);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  vertical-align: top;
+  line-height: 44px;
+  display: flex;
+  justify-content: center;
+  line-height: 1.5rem;
+}
+
+.heroLightboxClose:hover {
+  background: rgba(33, 150, 243, 0.24);
+}
+
+.heroLightboxImage {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 10rem);
+  object-fit: contain;
+  background: #0f141a;
+}
+
+.heroLightboxMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+}
+
+.heroLightboxMeta strong {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.heroLightboxMeta span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .heroCallout {
@@ -240,7 +380,7 @@
 }
 
 .section {
-  padding: 4.5rem 0;
+  padding: 2.5rem 0;
 }
 
 .sectionHeading {
@@ -249,7 +389,6 @@
 }
 
 .sectionHeading h2,
-.workflowPanel h2,
 .apiPanel h2 {
   margin-bottom: 0;
   color: #ffffff;
@@ -272,7 +411,19 @@
   border-radius: 8px;
   background: #2a2a2a;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.55s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  transition-delay:
+    var(--feature-delay, 0ms),
+    var(--feature-delay, 0ms),
+    0ms,
+    0ms;
 }
 
 .featureCard::before {
@@ -290,6 +441,26 @@
   box-shadow: 0 4px 12px rgba(33, 150, 243, 0.12);
 }
 
+.featureCard[data-reveal-state='hidden'] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+.featureCard[data-reveal-state='visible'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.featureCardLabel {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  color: var(--brand-300);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .featureCard h3 {
   margin-bottom: 0.7rem;
   color: #ffffff;
@@ -302,15 +473,14 @@
   color: var(--text-secondary);
 }
 
-.workflowSection {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+.discoverySection {
+  padding-top: 0;
 }
 
-.workflowPanel,
+.discoveryPanel,
 .apiPanel {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  position: relative;
+  overflow: hidden;
   padding: 1.8rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
@@ -318,13 +488,99 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
-.workflowList {
+.discoveryPanel {
+  min-height: 420px;
+  background:
+    radial-gradient(circle at top left, rgba(33, 150, 243, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(7, 10, 14, 0.96), rgba(17, 21, 28, 0.94));
+}
+
+.discoveryCoverGrid,
+.discoveryOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.discoveryCoverGrid {
   display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.85rem;
+  padding: 1.25rem;
+  opacity: 1;
+  transform: perspective(1200px) rotateX(6deg);
+}
+
+.discoveryCover {
+  width: 100%;
+  aspect-ratio: 2 / 2;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32);
+  transform: translateY(var(--cover-offset, 0)) rotate(var(--cover-rotation, 0deg));
+}
+
+.discoveryOverlay {
+  background:
+    linear-gradient(90deg, rgba(8, 12, 18, 0.92) 0%, rgba(8, 12, 18, 0.9) 35%, rgba(8, 12, 18, 0) 100%),
+    linear-gradient(180deg, rgba(8, 12, 18, 0.24), rgba(8, 12, 18, 0));
+}
+
+.discoveryContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  min-height: 384px;
+  max-width: 34rem;
+}
+
+.discoveryKicker {
+  color: var(--brand-300);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.discoveryContent h2 {
   margin: 0;
-  padding-left: 1.25rem;
+  color: #ffffff;
+  font-size: clamp(2.15rem, 4vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.discoveryContent p {
+  margin: 0;
   color: var(--text-secondary);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
+}
+
+.discoveryHighlightGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.discoveryHighlight {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.discoveryMeta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.apiPanel {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
 }
 
 .gallery {
@@ -379,8 +635,36 @@
     padding-top: 4rem;
   }
 
+  .heroCopy h1 {
+    max-width: unset;
+  }
+
+  .heroInner {
+    justify-items: center;
+    text-align: center;
+    gap: 0;
+  }
+
+  .heroCopy {
+    display: grid;
+    justify-items: center;
+  }
+
+  .heroLead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+
+  .heroPanel {
+    justify-self: center;
+    width: 100%;
+  }
+
   .heroInner,
-  .workflowPanel,
   .apiPanel,
   .cardGrid,
   .gallery {
@@ -391,6 +675,24 @@
     grid-template-columns: 1fr;
     max-width: none;
   }
+
+  .featureCard {
+    min-height: unset;
+  }
+
+  .discoveryPanel {
+    min-height: 520px;
+  }
+
+  .discoveryContent {
+    min-height: 420px;
+    max-width: none;
+  }
+
+  .discoveryCoverGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    opacity: 0.28;
+  }
 }
 
 @media (max-width: 640px) {
@@ -399,22 +701,59 @@
   }
 
   .heroMeta {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .heroExpandHint,
+  .heroLightboxMeta {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .featureCard,
-  .workflowPanel,
   .apiPanel,
   .galleryCard {
     border-radius: 8px;
+  }
+
+  .discoveryPanel {
+    min-height: 560px;
+    padding: 1.35rem;
+  }
+
+  .discoveryContent {
+    gap: 0.85rem;
+    min-height: 500px;
+  }
+
+  .discoveryCoverGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    padding: 1rem;
+    opacity: 0.22;
+  }
+
+  .discoveryHighlight {
+    width: 100%;
+    text-align: center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroSlide,
-  .heroIndicator {
+  .heroIndicator,
+  .discoveryCover {
     transition: none;
+    transform: none;
+  }
+
+  .featureCard {
+    transition: none;
+  }
+
+  .featureCard[data-reveal-state='hidden'] {
+    opacity: 1;
     transform: none;
   }
 }

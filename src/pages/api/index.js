@@ -86,25 +86,9 @@ export default function ApiUiPage() {
   const assetBase = useBaseUrl('/api-ui/');
 
   return (
-    <Layout title="API UI" description="Bundled Swagger UI for the Listenarr API.">
+    <Layout title="API" description="Bundled Swagger UI for the Listenarr API.">
       <main className={styles.page}>
         <div className="container">
-          <div className={styles.header}>
-            <div>
-              <p className={styles.kicker}>Listenarr API</p>
-              <h1>Bundled Swagger UI</h1>
-              <p>
-                This page mounts the Swagger UI and OpenAPI document generated from the Listenarr repository during the docs build.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="button button--primary button--lg"
-              onClick={() => window.open(`${assetBase}index.html`, '_blank', 'noopener,noreferrer')}
-            >
-              Open full screen
-            </button>
-          </div>
           <div className={styles.swaggerShell}>
             <BrowserOnly fallback={<div className={styles.loading}>Loading Swagger UI...</div>}>
               {() => <SwaggerApp assetBase={assetBase} />}

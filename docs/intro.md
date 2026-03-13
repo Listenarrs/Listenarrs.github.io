@@ -5,18 +5,28 @@ slug: /
 
 # Listenarr documentation
 
-Listenarr is a self-hosted audiobook automation server built to streamline the path from discovery to a clean, organized library. This site gives you a concise path through setup, core workflows, and the bundled API UI.
+Listenarr is a self-hosted audiobook automation server built to streamline the path from discovery to a clean, organized library. This site covers installation, first-run setup, the main configuration screens, and the bundled API UI.
 
 ## What you can do with Listenarr
 
 - Search and grab audiobooks from multiple torrent and NZB sources.
 - Connect popular download clients such as qBittorrent, Transmission, SABnzbd, and NZBGet.
-- Enrich your library with metadata from Audible- and Amazon-focused sources.
+- Enrich your library with metadata from Audimeta, Audnexus, and OpenLibrary-backed workflows.
 - Monitor activity in real time from a responsive web interface.
 - Organize files with customizable naming and folder rules.
 
-## Use this site
+## Start here
 
-- Start with [Installation](./getting-started/installation.md) if you are deploying Listenarr for the first time.
-- Follow [First run](./getting-started/first-run.md) to configure folders, indexers, and download clients.
-- Open the bundled [API UI](/api/) to inspect and test the current OpenAPI document.
+- [Installation](./getting-started/installation.md) covers Docker plus Windows, Linux, and macOS setups.
+- [First run](./getting-started/first-run.md) gives you the recommended setup order after the app is online.
+- [Root folders](./configuration/root-folders.md) explains how to choose and manage library locations.
+- [Download clients](./configuration/download-clients.md) covers qBittorrent, Transmission, SABnzbd, NZBGet, and remote path mappings.
+- [Indexers](./configuration/indexers.md) covers manual indexers plus Prowlarr import.
+- [Quality profiles](./configuration/quality-profiles.md) explains codecs, upgrades, M4B preference, and filters.
+- [Notifications](./configuration/notifications.md) covers Slack, Discord, Telegram, Pushover, Pushbullet, NTFY, and Zapier-compatible webhooks.
+- [Discord bot](./configuration/discord-bot.md) walks through the built-in request bot setup.
+- [General settings](./configuration/general-settings.md) documents each section of the main Settings page.
+
+## API
+
+Open the bundled [API documentation](/api/) to inspect and test the current OpenAPI document that ships with this docs site.

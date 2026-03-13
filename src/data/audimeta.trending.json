@@ -1,0 +1,307 @@
+{
+  "endpoint": "https://audimeta.de/search?products_sort_by=BestSellers&region=us&limit=18&page=0&cache=true",
+  "generatedAt": "2026-03-13T18:31:10.937Z",
+  "region": "us",
+  "total": 18,
+  "books": [
+    {
+      "rank": 1,
+      "asin": "B0GR6QBFPK",
+      "title": "A Court of Thorns and Roses 6",
+      "subtitle": "",
+      "imageUrl": "https://m.media-amazon.com/images/I/71llcQoSriL.jpg",
+      "link": "https://audible.com/pd/B0GR6QBFPK",
+      "author": "Sarah J. Maas",
+      "authors": [
+        "Sarah J. Maas"
+      ],
+      "series": "A Court of Thorns and Roses",
+      "seriesList": [
+        "A Court of Thorns and Roses"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 2,
+      "asin": "B0GR68XK99",
+      "title": "1% Lifesteal, Volume 4",
+      "subtitle": "A LitRPG Adventure",
+      "imageUrl": "https://m.media-amazon.com/images/I/81zg4AtSD+L.jpg",
+      "link": "https://audible.com/pd/B0GR68XK99",
+      "author": "Robert Blaise",
+      "authors": [
+        "Robert Blaise"
+      ],
+      "series": "1% Lifesteal",
+      "seriesList": [
+        "1% Lifesteal"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 3,
+      "asin": "B0GRWSBMHN",
+      "title": "Love Me Like You Shouldn't",
+      "subtitle": "",
+      "imageUrl": "https://m.media-amazon.com/images/I/71DvgsgGwRL.jpg",
+      "link": "https://audible.com/pd/B0GRWSBMHN",
+      "author": "Harper Bliss",
+      "authors": [
+        "Harper Bliss"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 4,
+      "asin": "B0GR8R1XZ2",
+      "title": "How to Eat an Elephant",
+      "subtitle": "One Voter at a Time",
+      "imageUrl": "https://m.media-amazon.com/images/I/71DT946IOcL.jpg",
+      "link": "https://audible.com/pd/B0GR8R1XZ2",
+      "author": "Sarah Longwell",
+      "authors": [
+        "Sarah Longwell"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 5,
+      "asin": "B0GS36ND3P",
+      "title": "Remedy: Love in Scrubs",
+      "subtitle": "",
+      "imageUrl": "https://m.media-amazon.com/images/I/81WfFT50htL.jpg",
+      "link": "https://audible.com/pd/B0GS36ND3P",
+      "author": "Shay Davis",
+      "authors": [
+        "Shay Davis"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 6,
+      "asin": "B0GRCYHW97",
+      "title": "A Court of Thorns and Roses 7",
+      "subtitle": "",
+      "imageUrl": "https://m.media-amazon.com/images/I/71I7NLVBVcL.jpg",
+      "link": "https://audible.com/pd/B0GRCYHW97",
+      "author": "Sarah J. Maas",
+      "authors": [
+        "Sarah J. Maas"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 7,
+      "asin": "B0GRWQLXJM",
+      "title": "If I Don't Return",
+      "subtitle": "A Father's Wartime Journal",
+      "imageUrl": "https://m.media-amazon.com/images/I/81mDxy3ADUL.jpg",
+      "link": "https://audible.com/pd/B0GRWQLXJM",
+      "author": "Mark Hertling",
+      "authors": [
+        "Mark Hertling"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 8,
+      "asin": "B0GR1FQRMY",
+      "title": "Patrick Stewart Performs the Complete Sonnets of William Shakespeare",
+      "subtitle": "With Original Commentary by Patrick Stewart",
+      "imageUrl": "https://m.media-amazon.com/images/I/91+pqI9QtWL.jpg",
+      "link": "https://audible.com/pd/B0GR1FQRMY",
+      "author": "Patrick Stewart",
+      "authors": [
+        "Patrick Stewart",
+        "William Shakespeare"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 9,
+      "asin": "B0GRW9G5Q4",
+      "title": "The Edens Series",
+      "subtitle": "A Small Town Montana Romance Series",
+      "imageUrl": "https://m.media-amazon.com/images/I/91MRmvTQLjL.jpg",
+      "link": "https://audible.com/pd/B0GRW9G5Q4",
+      "author": "Devney Perry",
+      "authors": [
+        "Devney Perry"
+      ],
+      "series": "The Edens",
+      "seriesList": [
+        "The Edens"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 10,
+      "asin": "B0GQCWKFMT",
+      "title": "Liar's Kingdom",
+      "subtitle": "How to Stop Trump’s Deceit and Save America",
+      "imageUrl": "https://m.media-amazon.com/images/I/71ud4EobxkL.jpg",
+      "link": "https://audible.com/pd/B0GQCWKFMT",
+      "author": "Andrew Weissmann",
+      "authors": [
+        "Andrew Weissmann"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 11,
+      "asin": "B0GQWJQBWT",
+      "title": "Mark of the Fool 10",
+      "subtitle": "A Progression Fantasy Epic",
+      "imageUrl": "https://m.media-amazon.com/images/I/81WD6or83EL.jpg",
+      "link": "https://audible.com/pd/B0GQWJQBWT",
+      "author": "J.M. Clarke",
+      "authors": [
+        "J.M. Clarke"
+      ],
+      "series": "Mark of the Fool",
+      "seriesList": [
+        "Mark of the Fool"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 12,
+      "asin": "B0GRWVNS5Y",
+      "title": "Fated Midlife Christmas",
+      "subtitle": "Shifter Nation: Enchanted Over Forty",
+      "imageUrl": "https://m.media-amazon.com/images/I/81A9g9YZq4L.jpg",
+      "link": "https://audible.com/pd/B0GRWVNS5Y",
+      "author": "Meg Ripley",
+      "authors": [
+        "Meg Ripley"
+      ],
+      "series": "Shifter Nation: Enchanted Over Forty",
+      "seriesList": [
+        "Shifter Nation: Enchanted Over Forty"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 13,
+      "asin": "B0GRW9TWQC",
+      "title": "The American War on Election Corruption",
+      "subtitle": "The Crusade to Restore Trust in Voting",
+      "imageUrl": "https://m.media-amazon.com/images/I/91WqNrfP23L.jpg",
+      "link": "https://audible.com/pd/B0GRW9TWQC",
+      "author": "Seth Keshel",
+      "authors": [
+        "Seth Keshel"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 14,
+      "asin": "B0GS35W2K1",
+      "title": "The Complete Philosophy Collection",
+      "subtitle": "Nicomachean Ethics by Aristotle, The Republic by Plato, Meditations by Marcus Aurelius, As a Man Thinketh by James Allen, Beyond Good and Evil by Friedrich Nietzsche, The Book of Five Rings by Miyamoto Musashi, The Art of War by Sun Tzu & Many More Classics",
+      "imageUrl": "https://m.media-amazon.com/images/I/61Zx8DVBvhL.jpg",
+      "link": "https://audible.com/pd/B0GS35W2K1",
+      "author": "Miyamoto Musashi",
+      "authors": [
+        "Miyamoto Musashi",
+        "Friedrich Nietzsche",
+        "Aristotle",
+        "Immanuel Kant",
+        "Seneca",
+        "Epictetus",
+        "James Allen",
+        "Arthur Schopenhauer",
+        "Confucius",
+        "David Hume",
+        "Epicurus",
+        "René Descartes",
+        "Sun Tzu",
+        "Plato",
+        "Marcus Aurelius"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 15,
+      "asin": "B0GNTFWV3J",
+      "title": "Spacebound and Down",
+      "subtitle": "No Stress Space Express, Book 2",
+      "imageUrl": "https://m.media-amazon.com/images/I/91E3Yp2A+aL.jpg",
+      "link": "https://audible.com/pd/B0GNTFWV3J",
+      "author": "Jack Bodett",
+      "authors": [
+        "Jack Bodett"
+      ],
+      "series": "No Stress Space Express",
+      "seriesList": [
+        "No Stress Space Express"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 16,
+      "asin": "B0GPSBN3S1",
+      "title": "Wisdom Untethered",
+      "subtitle": "The Time for Questions",
+      "imageUrl": "https://m.media-amazon.com/images/I/71aUDFwRS+L.jpg",
+      "link": "https://audible.com/pd/B0GPSBN3S1",
+      "author": "Michael A. Singer",
+      "authors": [
+        "Michael A. Singer"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    },
+    {
+      "rank": 17,
+      "asin": "B0GKHR8H4S",
+      "title": "Confession",
+      "subtitle": "An MM Bodyguard Romance (Constantine Brothers, Book 2)",
+      "imageUrl": "https://m.media-amazon.com/images/I/813M7zUoZLL.jpg",
+      "link": "https://audible.com/pd/B0GKHR8H4S",
+      "author": "Rina Saint",
+      "authors": [
+        "Rina Saint"
+      ],
+      "series": "Constantine Brothers",
+      "seriesList": [
+        "Constantine Brothers"
+      ],
+      "region": "us"
+    },
+    {
+      "rank": 18,
+      "asin": "B0GRJH72Y8",
+      "title": "The Devils They Are",
+      "subtitle": "An Academy Enemies To Lovers Romance (Boys of Willowbrook, Book 1)",
+      "imageUrl": "https://m.media-amazon.com/images/I/81-aymk0cnL.jpg",
+      "link": "https://audible.com/pd/B0GRJH72Y8",
+      "author": "Steph Macca",
+      "authors": [
+        "Steph Macca"
+      ],
+      "series": "",
+      "seriesList": [],
+      "region": "us"
+    }
+  ]
+}

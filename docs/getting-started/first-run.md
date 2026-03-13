@@ -4,31 +4,66 @@ sidebar_position: 2
 
 # First run
 
-After Listenarr is running, use the web UI to connect the services that power your workflow.
+After Listenarr is running, use the web UI to connect the pieces that power search, downloads, imports, and notifications.
 
 ## Recommended order
 
-1. Configure one or more root folders for your audiobook library.
-2. Connect your preferred download client.
-3. Add torrent or NZB indexers.
-4. Review metadata and file-management settings.
-5. Enable notifications if you want status updates outside the app.
+1. Configure [root folders](../configuration/root-folders.md) for the finished library.
+2. Create or review [quality profiles](../configuration/quality-profiles.md) before large imports.
+3. Add a [download client](../configuration/download-clients.md) and set remote path mappings if needed.
+4. Add [indexers](../configuration/indexers.md) or import them from Prowlarr.
+5. Review [general settings](../configuration/general-settings.md), especially naming patterns and completed file action.
+6. Add [notifications](../configuration/notifications.md) if you want external alerts.
+7. Set up the [Discord bot](../configuration/discord-bot.md) if you want request-based automation from Discord.
 
-## Root folders
+## First-run checklist
 
-Root folders tell Listenarr where finished audiobooks should live. Choose locations with enough disk space and predictable permissions, especially when using Docker bind mounts.
+### 1. Root folder first
 
-## Download clients
+Set the final library destination before testing downloads. This avoids importing books into the wrong place and then having to move them later.
 
-Listenarr works with qBittorrent, Transmission, SABnzbd, and NZBGet. Make sure the paths exposed to Listenarr match the paths your download client actually writes to. If they differ across containers or hosts, set up remote path mappings early.
+### 2. Decide on your file action early
 
-## Indexers and search
+In General Settings, choose whether imports should:
 
-Connect the indexers you trust, verify credentials, then test searches from the UI. Listenarr can search across multiple sources while preserving quality-profile and filtering rules.
+- move files
+- hardlink when possible and copy as fallback
 
-## Metadata and organization
+If you want hardlinks, make sure your download client path and root folder live on the same filesystem or volume.
 
-Review naming patterns, metadata sources, and library import behavior before you start bulk importing. That prevents avoidable cleanup later.
+### 3. Save at least one quality profile
+
+Create a profile that matches the formats you actually want. If you prefer AAC-based audiobooks and chapter-friendly files, enable AAC and turn on `Prefer M4B container`.
+
+### 4. Add the download client before the indexers
+
+Search results are more useful once Listenarr knows where it will send grabs. Test the client connection before moving on.
+
+### 5. Add or import indexers
+
+If you already use Prowlarr, import from there instead of duplicating manual indexer setup.
+
+### 6. Review General Settings
+
+Pay special attention to:
+
+- naming patterns
+- metadata processing
+- OpenLibrary searching
+- failed download handling
+- authentication
+
+### 7. Test with one book
+
+Before importing a large wishlist, add one book and watch it move through:
+
+- search
+- grab
+- client download
+- import
+- library organization
+
+That single end-to-end test will expose path, permission, and category problems early.
 
 ## Security note
 

@@ -4,11 +4,14 @@
   "private": true,
   "description": "Listenarr documentation website powered by Docusaurus",
   "scripts": {
+    "prestart": "node scripts/fetch-audimeta-trending.mjs",
+    "prebuild": "node scripts/fetch-audimeta-trending.mjs",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "fetch:audimeta": "node scripts/fetch-audimeta-trending.mjs",
     "sync:listenarr": "node scripts/sync-listenarr.mjs"
   },
   "dependencies": {
