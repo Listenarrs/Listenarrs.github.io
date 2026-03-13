@@ -72,12 +72,6 @@ jobs:
           LISTENARR_REF: ${{ steps.listenarr-ref.outputs.ref }}
         run: npm run sync:listenarr -- --repo ./_listenarr
 
-      - name: Fail if main ref sync failed
-        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref == 'main'
-        run: |
-          echo "Listenarr sync failed for main and no fallback ref is available."
-          exit 1
-
       - name: Checkout Listenarr main fallback
         if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'main'
         uses: actions/checkout@v4
@@ -88,10 +82,42 @@ jobs:
           fetch-depth: 1
 
       - name: Sync Listenarr API bundle from main fallback
+        id: sync-listenarr-main
         if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'main'
+        continue-on-error: true
         env:
           LISTENARR_REF: main
         run: npm run sync:listenarr -- --repo ./_listenarr
+
+      - name: Verify committed API bundle fallback
+        if: steps.sync-listenarr.outcome == 'failure' && (steps.listenarr-ref.outputs.ref == 'main' || steps.sync-listenarr-main.outcome == 'failure')
+        shell: bash
+        run: |
+          set -euo pipefail
+          required_files=(
+            "static/api-ui/index.html"
+            "static/api-ui/openapi.json"
+            "static/api-ui/swagger-initializer.js"
+            "static/api-ui/swagger-ui-bundle.js"
+            "static/api-ui/swagger-ui-standalone-preset.js"
+            "static/api-ui/swagger-ui.css"
+            "src/data/listenarr.generated.json"
+          )
+
+          missing=0
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing fallback file: $file"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            echo "Listenarr sync failed and no committed API bundle fallback is available."
+            exit 1
+          fi
+
+          echo "::warning::Listenarr sync failed; using the committed API bundle fallback for this docs build."
 
       - name: Build docs site
         run: npm run build
