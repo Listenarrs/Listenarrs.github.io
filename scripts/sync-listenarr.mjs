@@ -183,7 +183,8 @@ function runCommand(command, args, options = {}) {
     ...options,
   });
   if (result.status !== 0) {
-    throw new Error(`Command failed: ${command} ${args.join(' ')}\n${result.stderr || result.stdout}`);
+    const details = [result.stderr, result.stdout, result.error?.message].filter(Boolean).join('\n') || `Exit code ${result.status}`;
+    throw new Error(`Command failed: ${command} ${args.join(' ')}\n${details}`);
   }
 }
 

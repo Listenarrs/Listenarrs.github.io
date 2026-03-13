@@ -65,9 +65,32 @@ jobs:
       - name: Install docs dependencies
         run: npm ci
 
-      - name: Sync Listenarr assets and API bundle
+      - name: Sync Listenarr API bundle
+        id: sync-listenarr
+        continue-on-error: true
         env:
           LISTENARR_REF: ${{ steps.listenarr-ref.outputs.ref }}
+        run: npm run sync:listenarr -- --repo ./_listenarr
+
+      - name: Fail if main ref sync failed
+        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref == 'main'
+        run: |
+          echo "Listenarr sync failed for main and no fallback ref is available."
+          exit 1
+
+      - name: Checkout Listenarr main fallback
+        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'main'
+        uses: actions/checkout@v4
+        with:
+          repository: Listenarrs/Listenarr
+          ref: main
+          path: _listenarr
+          fetch-depth: 1
+
+      - name: Sync Listenarr API bundle from main fallback
+        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'main'
+        env:
+          LISTENARR_REF: main
         run: npm run sync:listenarr -- --repo ./_listenarr
 
       - name: Build docs site
