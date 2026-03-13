@@ -116,17 +116,6 @@ function GitHubMark(props) {
   );
 }
 
-function formatDate(isoValue) {
-  const date = new Date(isoValue);
-  return Number.isNaN(date.getTime())
-    ? 'Unknown'
-    : date.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-      });
-}
-
 function HomepageHeader() {
   const docsUrl = useBaseUrl('/docs/getting-started/quick-start');
   const releasesUrl = 'https://github.com/Listenarrs/Listenarr/releases/latest';

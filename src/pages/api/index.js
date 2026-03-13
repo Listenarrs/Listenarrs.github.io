@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -7,9 +7,11 @@ import styles from './index.module.css';
 
 function SwaggerApp({assetBase}) {
   const containerRef = useRef(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     let cancelled = false;
+    setErrorMessage('');
 
     ensureStylesheet(`${assetBase}swagger-ui.css`, 'listenarr-swagger-ui-css');
 
@@ -31,8 +33,9 @@ function SwaggerApp({assetBase}) {
         });
       })
       .catch((error) => {
-        if (containerRef.current) {
-          containerRef.current.innerHTML = `<div class="${styles.error}">Failed to load Swagger UI: ${error.message}</div>`;
+        if (!cancelled) {
+          const message = error instanceof Error ? error.message : String(error);
+          setErrorMessage(`Failed to load Swagger UI: ${message}`);
         }
       });
 
@@ -40,6 +43,10 @@ function SwaggerApp({assetBase}) {
       cancelled = true;
     };
   }, [assetBase]);
+
+  if (errorMessage) {
+    return <div className={styles.error}>{errorMessage}</div>;
+  }
 
   return <div ref={containerRef} className={styles.swaggerMount} />;
 }
