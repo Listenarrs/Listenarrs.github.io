@@ -15,7 +15,7 @@ async function main() {
 
   console.log(`Syncing Listenarr API bundle from ${repoRoot}`);
 
-  const sourceRef = process.env.LISTENARR_REF || readGitValue(['rev-parse', '--abbrev-ref', 'HEAD']) || 'main';
+  const sourceRef = process.env.LISTENARR_REF || readGitValue(['rev-parse', '--abbrev-ref', 'HEAD']) || 'canary';
   const version = readListenarrVersion(sourceRef);
   const commit = readGitValue(['rev-parse', '--short', 'HEAD']);
 

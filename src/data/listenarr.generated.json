@@ -1,7 +1,7 @@
 {
   "sourceRepository": "https://github.com/Listenarrs/Listenarr",
-  "sourceRef": "pr/398",
+  "sourceRef": "HEAD",
   "version": "0.2.57",
-  "commit": "ab600f9",
-  "generatedAt": "2026-03-13T20:19:00.064Z"
+  "commit": "a87d4e3",
+  "generatedAt": "2026-03-13T21:28:23.039Z"
 }
