@@ -1,0 +1,146 @@
+name: Build and deploy docs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - listenarr_release
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: listenarr-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      - name: Resolve Listenarr ref
+        id: listenarr-ref
+        shell: bash
+        env:
+          EVENT_REF: ${{ github.event.client_payload.ref }}
+        run: |
+          if [ -n "$EVENT_REF" ]; then
+            echo "ref=$EVENT_REF" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=canary" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout Listenarr
+        uses: actions/checkout@v4
+        with:
+          repository: Listenarrs/Listenarr
+          ref: ${{ steps.listenarr-ref.outputs.ref }}
+          path: _listenarr
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install docs dependencies
+        run: npm ci
+
+      - name: Sync Listenarr API bundle
+        id: sync-listenarr
+        continue-on-error: true
+        env:
+          LISTENARR_REF: ${{ steps.listenarr-ref.outputs.ref }}
+        run: npm run sync:listenarr -- --repo ./_listenarr
+
+      - name: Checkout Listenarr canary fallback
+        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'canary'
+        uses: actions/checkout@v4
+        with:
+          repository: Listenarrs/Listenarr
+          ref: canary
+          path: _listenarr
+          fetch-depth: 1
+
+      - name: Sync Listenarr API bundle from canary fallback
+        id: sync-listenarr-canary
+        if: steps.sync-listenarr.outcome == 'failure' && steps.listenarr-ref.outputs.ref != 'canary'
+        continue-on-error: true
+        env:
+          LISTENARR_REF: canary
+        run: npm run sync:listenarr -- --repo ./_listenarr
+
+      - name: Verify committed API bundle fallback
+        if: steps.sync-listenarr.outcome == 'failure' && (steps.listenarr-ref.outputs.ref == 'canary' || steps.sync-listenarr-canary.outcome == 'failure')
+        shell: bash
+        run: |
+          set -euo pipefail
+          required_files=(
+            "static/api-ui/index.html"
+            "static/api-ui/openapi.json"
+            "static/api-ui/swagger-initializer.js"
+            "static/api-ui/swagger-ui-bundle.js"
+            "static/api-ui/swagger-ui-standalone-preset.js"
+            "static/api-ui/swagger-ui.css"
+            "src/data/listenarr.generated.json"
+          )
+
+          missing=0
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing fallback file: $file"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            echo "Listenarr sync failed and no committed API bundle fallback is available."
+            exit 1
+          fi
+
+          echo "::warning::Listenarr sync failed; using the committed API bundle fallback for this docs build."
+
+      - name: Build docs site
+        run: npm run build
+
+      - name: Setup Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

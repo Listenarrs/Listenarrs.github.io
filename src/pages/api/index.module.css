@@ -1,0 +1,363 @@
+.page {
+  padding: 2.5rem 0 4rem;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+}
+
+.header p:last-child {
+  max-width: 44rem;
+  margin-bottom: 0;
+}
+
+.kicker {
+  margin-bottom: 0.5rem;
+  color: var(--brand-300);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.swaggerShell {
+  min-height: 78vh;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #232323;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.swaggerMount {
+  min-height: 78vh;
+}
+
+.loading,
+.error {
+  display: grid;
+  place-items: center;
+  min-height: 78vh;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.error {
+  color: #9f3b2d;
+}
+
+.swaggerShell :global(.swagger-ui) {
+  color: #ffffff;
+  background: #161b22;
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.swaggerShell :global(.swagger-ui .topbar) {
+  display: none;
+}
+
+.swaggerShell :global(.swagger-ui .wrapper) {
+  background: #161b22;
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .backdrop-ux) {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux) {
+  background: #1b222c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-header) {
+  background: #11161d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-content) {
+  background: #1b222c;
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-header h3),
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-content h4),
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-content p),
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-content label),
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-content small),
+.swaggerShell :global(.swagger-ui .scopes h2),
+.swaggerShell :global(.swagger-ui .auth-container h4) {
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .scopes h2 a),
+.swaggerShell :global(.swagger-ui .auth-container .wrapper p),
+.swaggerShell :global(.swagger-ui .auth-container .wrapper label) {
+  color: #90caf9;
+}
+
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-header .close-modal),
+.swaggerShell :global(.swagger-ui .dialog-ux .modal-ux-header .close-modal svg) {
+  color: #ffffff;
+  fill: currentColor;
+}
+
+.swaggerShell :global(.swagger-ui .auth-container) {
+  background: #161b22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui .auth-container:last-of-type) {
+  border-bottom: 0;
+}
+
+.swaggerShell :global(.swagger-ui .auth-container .errors) {
+  background: rgba(249, 62, 62, 0.14);
+  border: 1px solid rgba(249, 62, 62, 0.35);
+  color: #ffd4d4;
+}
+
+.swaggerShell :global(.swagger-ui .scheme-container) {
+  background: #11161d;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui .info) {
+  margin: unset;
+  padding: 20px 0;
+}
+
+.swaggerShell :global(.swagger-ui .renderedMarkdown code) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .scheme-container) {
+  margin: 30px;
+  padding: unset;
+  border: unset;
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-section-header) {
+  background: hsla(0,0%,100%,.1);
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-section-header h4) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .btn) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .opblock-description-wrapper p) {
+  color: #fff;
+}
+
+.swaggerShell :global(.swagger-ui .info),
+.swaggerShell :global(.swagger-ui .opblock),
+.swaggerShell :global(.swagger-ui .responses-inner),
+.swaggerShell :global(.swagger-ui .model-box),
+.swaggerShell :global(.swagger-ui section.models),
+.swaggerShell :global(.swagger-ui .tab),
+.swaggerShell :global(.swagger-ui table tbody tr td),
+.swaggerShell :global(.swagger-ui .response-col_status),
+.swaggerShell :global(.swagger-ui .response-col_description),
+.swaggerShell :global(.swagger-ui .parameters-col_description),
+.swaggerShell :global(.swagger-ui .opblock-description-wrapper),
+.swaggerShell :global(.swagger-ui .opblock-external-docs-wrapper),
+.swaggerShell :global(.swagger-ui .opblock-title_normal) {
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .info .title),
+.swaggerShell :global(.swagger-ui .opblock-tag),
+.swaggerShell :global(.swagger-ui .parameter__name),
+.swaggerShell :global(.swagger-ui .response-col_status),
+.swaggerShell :global(.swagger-ui .response-col_description__inner p),
+.swaggerShell :global(.swagger-ui label),
+.swaggerShell :global(.swagger-ui .model-title),
+.swaggerShell :global(.swagger-ui .prop-name),
+.swaggerShell :global(.swagger-ui .tab li button.tablinks),
+.swaggerShell :global(.swagger-ui .responses-inner h4),
+.swaggerShell :global(.swagger-ui .responses-inner h5),
+.swaggerShell :global(.swagger-ui .opblock-section-header h4),
+.swaggerShell :global(.swagger-ui .parameter__type),
+.swaggerShell :global(.swagger-ui .parameter__in),
+.swaggerShell :global(.swagger-ui .parameter__deprecated),
+.swaggerShell :global(.swagger-ui table thead tr th),
+.swaggerShell :global(.swagger-ui table thead tr td),
+.swaggerShell :global(.swagger-ui .response-col_links),
+.swaggerShell :global(.swagger-ui .response-col_description__inner div),
+.swaggerShell :global(.swagger-ui .model),
+.swaggerShell :global(.swagger-ui .prop-type),
+.swaggerShell :global(.swagger-ui .opblock-summary-method) {
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .info p),
+.swaggerShell :global(.swagger-ui .info li),
+.swaggerShell :global(.swagger-ui .markdown p),
+.swaggerShell :global(.swagger-ui .markdown li),
+.swaggerShell :global(.swagger-ui .tab li),
+.swaggerShell :global(.swagger-ui .renderedMarkdown p),
+.swaggerShell :global(.swagger-ui .renderedMarkdown li),
+.swaggerShell :global(.swagger-ui .response-col_description__inner),
+.swaggerShell :global(.swagger-ui .parameter__extension),
+.swaggerShell :global(.swagger-ui .opblock-tag small),
+.swaggerShell :global(.swagger-ui .info .base-url),
+.swaggerShell :global(.swagger-ui .info a),
+.swaggerShell :global(.swagger-ui .info a:hover),
+.swaggerShell :global(.swagger-ui .response-col_description .markdown),
+.swaggerShell :global(.swagger-ui .parameter__name.required span),
+.swaggerShell :global(.swagger-ui .parameter__name.required:after),
+.swaggerShell :global(.swagger-ui .model-toggle:after),
+.swaggerShell :global(.swagger-ui .expand-operation svg),
+.swaggerShell :global(.swagger-ui .opblock-control-arrow svg),
+.swaggerShell :global(.swagger-ui .authorization__btn svg),
+.swaggerShell :global(.swagger-ui .copy-to-clipboard svg) {
+  color: #cccccc;
+  fill: currentColor;
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-summary-description),
+.swaggerShell :global(.swagger-ui .opblock .opblock-summary-operation-id),
+.swaggerShell :global(.swagger-ui .opblock .opblock-summary-path),
+.swaggerShell :global(.swagger-ui .opblock .opblock-summary-path__deprecated) {
+  color: revert;
+}
+
+.swaggerShell :global(.swagger-ui .opblock-tag) {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui .opblock) {
+  background: #1e2630;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.swaggerShell :global(.swagger-ui .opblock .opblock-summary) {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.swaggerShell :global(.swagger-ui .opblock.opblock-get) {
+  background: rgba(33, 150, 243, 0.14);
+  border-color: rgba(33, 150, 243, 0.42);
+}
+
+.swaggerShell :global(.swagger-ui .opblock.opblock-post) {
+  background: rgba(81, 207, 102, 0.12);
+}
+
+.swaggerShell :global(.swagger-ui .opblock.opblock-put) {
+  background: rgba(247, 201, 72, 0.12);
+}
+
+.swaggerShell :global(.swagger-ui .opblock.opblock-delete) {
+  background: rgba(255, 107, 107, 0.12);
+}
+
+.swaggerShell :global(.swagger-ui .opblock-body pre),
+.swaggerShell :global(.swagger-ui .highlight-code),
+.swaggerShell :global(.swagger-ui .microlight),
+.swaggerShell :global(.swagger-ui pre.microlight) {
+  background: #0f141a !important;
+  color: #f4f8fc !important;
+}
+
+.swaggerShell :global(.swagger-ui .responses-inner),
+.swaggerShell :global(.swagger-ui .model-box),
+.swaggerShell :global(.swagger-ui section.models),
+.swaggerShell :global(.swagger-ui table tbody tr td),
+.swaggerShell :global(.swagger-ui table thead tr th),
+.swaggerShell :global(.swagger-ui table thead tr td),
+.swaggerShell :global(.swagger-ui .tab li button.tablinks.active),
+.swaggerShell :global(.swagger-ui .response-col_description pre) {
+  background: #1b222c;
+}
+
+.swaggerShell :global(.swagger-ui table tbody tr td),
+.swaggerShell :global(.swagger-ui table thead tr th),
+.swaggerShell :global(.swagger-ui table thead tr td),
+.swaggerShell :global(.swagger-ui .responses-table tbody tr td) {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui .btn),
+.swaggerShell :global(.swagger-ui .download-url-wrapper .select-label select),
+.swaggerShell :global(.swagger-ui select),
+.swaggerShell :global(.swagger-ui input[type='text']),
+.swaggerShell :global(.swagger-ui input[type='password']),
+.swaggerShell :global(.swagger-ui textarea) {
+  border-radius: 8px;
+}
+
+.swaggerShell :global(.swagger-ui .btn.authorize),
+.swaggerShell :global(.swagger-ui .btn.execute) {
+  border: 1px solid #1976d2;
+  background: #2196f3;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.12);
+}
+
+.swaggerShell :global(.swagger-ui .btn.authorize:hover),
+.swaggerShell :global(.swagger-ui .btn.execute:hover) {
+  background: #1976d2;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.14);
+}
+
+.swaggerShell :global(.swagger-ui .btn.cancel),
+.swaggerShell :global(.swagger-ui .download-url-wrapper .select-label select),
+.swaggerShell :global(.swagger-ui select) {
+  background: #2a2f37;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .download-url-wrapper input[type='text']),
+.swaggerShell :global(.swagger-ui input[type='text']),
+.swaggerShell :global(.swagger-ui input[type='password']),
+.swaggerShell :global(.swagger-ui textarea) {
+  background: #11161d;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.swaggerShell :global(.swagger-ui .download-url-wrapper input::placeholder),
+.swaggerShell :global(.swagger-ui input::placeholder),
+.swaggerShell :global(.swagger-ui textarea::placeholder) {
+  color: #94a3b8;
+}
+
+.swaggerShell :global(.swagger-ui .model-box),
+.swaggerShell :global(.swagger-ui section.models) {
+  background: #11161d;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.swaggerShell :global(.swagger-ui section.models h4),
+.swaggerShell :global(.swagger-ui .responses-inner h4),
+.swaggerShell :global(.swagger-ui .responses-inner h5),
+.swaggerShell :global(.swagger-ui .info .title small.version-stamp),
+.swaggerShell :global(.swagger-ui .info .title small pre) {
+  color: #ffffff;
+}
+
+@media (max-width: 996px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
