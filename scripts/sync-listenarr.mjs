@@ -15,9 +15,9 @@ async function main() {
 
   console.log(`Syncing Listenarr API bundle from ${repoRoot}`);
 
-  const version = readVersionFromCsproj();
-  const commit = readGitValue(['rev-parse', '--short', 'HEAD']);
   const sourceRef = process.env.LISTENARR_REF || readGitValue(['rev-parse', '--abbrev-ref', 'HEAD']) || 'main';
+  const version = readListenarrVersion(sourceRef);
+  const commit = readGitValue(['rev-parse', '--short', 'HEAD']);
 
   const publishRoot = mkdtempSync(path.join(os.tmpdir(), 'listenarr-docs-'));
   const publishDir = path.join(publishRoot, 'publish');
@@ -100,14 +100,71 @@ function assertPathExists(targetPath, label) {
   }
 }
 
-function readVersionFromCsproj() {
+function readListenarrVersion(sourceRef) {
   const csprojPath = path.join(repoRoot, 'listenarr.api', 'Listenarr.Api.csproj');
-  const content = readFileSync(csprojPath, 'utf8');
-  const match = content.match(/<Version>([^<]+)<\/Version>/);
-  if (!match) {
-    throw new Error(`Unable to locate <Version> in ${csprojPath}`);
+
+  const evaluatedVersion = readMsbuildProperty(csprojPath, 'Version');
+  if (evaluatedVersion) {
+    return evaluatedVersion;
   }
-  return match[1].trim();
+
+  const versionFromFile = readVersionFromProjectFile(csprojPath);
+  if (versionFromFile) {
+    return versionFromFile;
+  }
+
+  const describedVersion = readGitValue(['describe', '--tags', '--always']);
+  if (describedVersion) {
+    console.warn(`Unable to resolve Listenarr version from MSBuild metadata; using git describe value "${describedVersion}".`);
+    return describedVersion;
+  }
+
+  const refVersion = normalizeRefName(sourceRef);
+  if (refVersion) {
+    console.warn(`Unable to resolve Listenarr version from MSBuild metadata; using source ref "${refVersion}".`);
+    return refVersion;
+  }
+
+  console.warn(`Unable to resolve Listenarr version from ${csprojPath}; using "unknown".`);
+  return 'unknown';
+}
+
+function readMsbuildProperty(csprojPath, propertyName) {
+  const result = spawnSync('dotnet', ['msbuild', csprojPath, '-nologo', `-getProperty:${propertyName}`], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+  });
+
+  if (result.status !== 0) {
+    return '';
+  }
+
+  return result.stdout.trim();
+}
+
+function readVersionFromProjectFile(csprojPath) {
+  const content = readFileSync(csprojPath, 'utf8');
+  const directVersion = content.match(/<Version>([^<]+)<\/Version>/);
+  if (directVersion) {
+    return directVersion[1].trim();
+  }
+
+  const versionPrefix = content.match(/<VersionPrefix>([^<]+)<\/VersionPrefix>/)?.[1]?.trim() || '';
+  const versionSuffix = content.match(/<VersionSuffix>([^<]+)<\/VersionSuffix>/)?.[1]?.trim() || '';
+
+  if (!versionPrefix) {
+    return '';
+  }
+
+  return versionSuffix ? `${versionPrefix}-${versionSuffix}` : versionPrefix;
+}
+
+function normalizeRefName(refValue) {
+  if (!refValue) {
+    return '';
+  }
+
+  return refValue.replace(/^refs\/tags\//, '').replace(/^refs\/heads\//, '').trim();
 }
 
 function readGitValue(args) {

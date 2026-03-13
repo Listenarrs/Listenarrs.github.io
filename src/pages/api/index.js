@@ -59,9 +59,8 @@ function ensureScript(src, id) {
         resolve();
         return;
       }
-      existing.addEventListener('load', resolve, {once: true});
-      existing.addEventListener('error', () => reject(new Error(`Unable to load ${src}`)), {once: true});
-      return;
+
+      existing.remove();
     }
 
     const script = document.createElement('script');
@@ -72,7 +71,10 @@ function ensureScript(src, id) {
       script.dataset.loaded = 'true';
       resolve();
     };
-    script.onerror = () => reject(new Error(`Unable to load ${src}`));
+    script.onerror = () => {
+      script.remove();
+      reject(new Error(`Unable to load ${src}`));
+    };
     document.body.appendChild(script);
   });
 }
