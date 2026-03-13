@@ -1,5 +1,4 @@
 import {mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync, existsSync} from 'node:fs';
-import {cp} from 'node:fs/promises';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
@@ -11,21 +10,10 @@ const defaultRepo = path.resolve(siteRoot, '..', 'Listenarr');
 const providedRepo = getArgValue('--repo');
 const repoRoot = path.resolve(providedRepo || process.env.LISTENARR_REPO || defaultRepo);
 
-const assetMappings = [
-  ['.github/logo-full.png', 'static/img/listenarr/logo-full.png'],
-  ['.github/logo-icon.png', 'static/img/listenarr/logo-icon.png'],
-  ['preview-images/audiobooks.png', 'static/img/listenarr/audiobooks.png'],
-  ['preview-images/search-result.png', 'static/img/listenarr/search-result.png'],
-  ['preview-images/wanted.png', 'static/img/listenarr/wanted.png'],
-  ['preview-images/add-to-library.png', 'static/img/listenarr/add-to-library.png'],
-  ['fe/public/fonts/Figtree-VariableFont_wght.ttf', 'static/fonts/Figtree-VariableFont_wght.ttf'],
-];
-
 async function main() {
   assertPathExists(repoRoot, 'Listenarr repository');
 
-  console.log(`Syncing Listenarr assets from ${repoRoot}`);
-  await copyAssets();
+  console.log(`Syncing Listenarr API bundle from ${repoRoot}`);
 
   const version = readVersionFromCsproj();
   const commit = readGitValue(['rev-parse', '--short', 'HEAD']);
@@ -109,16 +97,6 @@ function getArgValue(flag) {
 function assertPathExists(targetPath, label) {
   if (!existsSync(targetPath)) {
     throw new Error(`${label} not found at ${targetPath}`);
-  }
-}
-
-async function copyAssets() {
-  for (const [from, to] of assetMappings) {
-    const source = path.join(repoRoot, from);
-    const destination = path.join(siteRoot, to);
-    assertPathExists(source, `Asset ${from}`);
-    mkdirSync(path.dirname(destination), {recursive: true});
-    await cp(source, destination, {force: true});
   }
 }
 
