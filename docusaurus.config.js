@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
 
   organizationName: 'Listenarrs',
-  projectName: 'listenarr.github.io',
+  projectName: 'Listenarrs.github.io',
 
   onBrokenLinks: 'throw',
   trailingSlash: true,
@@ -35,7 +35,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
-          editUrl: 'https://github.com/Listenarrs/listenarr.github.io/tree/main/',
+          editUrl: 'https://github.com/Listenarrs/Listenarrs.github.io/tree/main/',
         },
         blog: false,
         theme: {
@@ -63,7 +63,7 @@ const config = {
             label: 'Docs',
           },
           {
-            href: '/api/',
+            to: '/api/',
             label: 'API',
             position: 'left',
           },
@@ -99,7 +99,7 @@ const config = {
               },
               {
                 label: 'API',
-                href: '/api/',
+                to: '/api/',
               },
             ],
           },
