@@ -5,7 +5,7 @@ slug: /
 
 # Listenarr documentation
 
-Listenarr is a self-hosted audiobook automation server built to streamline the path from discovery to a clean, organized library. This site covers installation, first-run setup, the main configuration screens, and the bundled API UI.
+Listenarr is a self-hosted audiobook automation server built to streamline the path from discovery to a clean, organized library. This site covers installation, first-run setup, the main configuration screens, and the Listenarr API.
 
 ## What you can do with Listenarr
 
@@ -29,4 +29,4 @@ Listenarr is a self-hosted audiobook automation server built to streamline the p
 
 ## API
 
-Open the bundled [API documentation](/api/) to inspect and test the current OpenAPI document that ships with this docs site.
+Open the [API guide](pathname:///api/) to review the bundled OpenAPI snapshot and see how to use Swagger on your own Listenarr instance.
