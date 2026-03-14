@@ -241,7 +241,6 @@ function HomepageHeader() {
 
         <div className={clsx('container', styles.heroInner)}>
           <div className={styles.heroCopy}>
-            <img src={logoUrl} alt="Listenarr" className={styles.heroLogo} />
             <h1>Simplify your audiobook experience</h1>
             <p className={styles.heroLead}>
               Centralize discovery, downloads, metadata, and library organization into one self-hosted application built for audiobook collectors.
@@ -478,7 +477,7 @@ function ApiCallout() {
           </div>
           <div className={styles.apiActions}>
             <Link className="button button--primary button--lg" to={apiUrl}>
-              View API documentation
+              View API guide
             </Link>
             <Link className="button button--secondary button--lg" href={repoUrl}>
               View Listenarr source
