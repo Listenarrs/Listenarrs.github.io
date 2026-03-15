@@ -7,10 +7,9 @@ import metadata from '@site/src/data/listenarr.generated.json';
 import styles from './index.module.css';
 
 const swaggerExamples = [
-  'http://localhost:5000/swagger/',
-  'http://<listenarr-ip>:<port>/swagger/',
-  'https://listenarr.example.com/swagger/',
-  'https://listenarr.example.com/<urlBase>/swagger/',
+  'http://localhost:4545/swagger/',
+  'http://<listenarr-host>:4545/swagger/',
+  'http://<listenarr-host>:<custom-port>/swagger/',
 ];
 
 function SwaggerReference({assetBase}) {
@@ -145,7 +144,7 @@ export default function ApiPage() {
   return (
     <Layout
       title="API"
-      description="Read-only Listenarr API reference plus guidance for opening Swagger on your own instance.">
+      description="Read-only Listenarr API reference plus guidance for the development-only Swagger UI.">
       <main className={styles.page}>
         <div className="container">
           <section className={styles.introSection}>
@@ -153,8 +152,9 @@ export default function ApiPage() {
               <h1>Listenarr API documentation</h1>
               <p className={styles.lead}>
                 This page renders the bundled OpenAPI snapshot as a read-only endpoint reference.
-                For interactive requests and write actions, open Swagger on your own Listenarr
-                instance.
+                Listenarr&apos;s built-in Swagger UI is currently enabled only for Development
+                builds, so this docs site is the reliable reference for normal installed
+                instances.
               </p>
               <div className={styles.actions}>
                 <a className="button button--primary button--lg" href={openApiUrl}>
@@ -168,13 +168,16 @@ export default function ApiPage() {
 
             <div className={styles.grid}>
               <article className={styles.card}>
-                <h2>Open Swagger on your own instance</h2>
+                <h2>Use Swagger in a local development instance</h2>
                 <p>
-                  Use the same host, port, and optional base path as your Listenarr web app, then
-                  append <code>/swagger/</code>.
+                  Listenarr mounts Swagger only when the app runs in <code>Development</code>. By
+                  default the API listens on port <code>4545</code>, unless you override it with{' '}
+                  <code>--urls</code>, so the built-in Swagger UI is usually available at{' '}
+                  <code>/swagger/</code> on that same origin.
                 </p>
                 <p className={styles.cardNote}>
-                  Use your own instance when you need live requests, login, or write operations.
+                  Normal installed or production-style instances do not expose <code>/swagger/</code>{' '}
+                  by default.
                 </p>
                 <pre className={styles.codeBlock}>
                   <code>{swaggerExamples.join('\n')}</code>

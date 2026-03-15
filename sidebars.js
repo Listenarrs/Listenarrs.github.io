@@ -24,21 +24,6 @@ const sidebars = {
         'configuration/general-settings',
       ],
     },
-    {
-      type: 'category',
-      label: 'Product Tour',
-      items: [
-        'product-tour/features',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Reference',
-      items: [
-        'reference/api',
-        'reference/development',
-      ],
-    },
   ],
 };
 
