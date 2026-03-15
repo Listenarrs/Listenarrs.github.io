@@ -164,6 +164,10 @@ export default function ApiPage() {
                   View Listenarr source
                 </a>
               </div>
+              <p className={styles.metaNote}>
+                Bundled spec generated {generatedAt} from Listenarr {metadata.version} (
+                {metadata.commit}).
+              </p>
             </div>
 
             <div className={styles.grid}>

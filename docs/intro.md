@@ -29,4 +29,4 @@ Listenarr is a self-hosted audiobook automation server built to streamline the p
 
 ## API
 
-Open the [API guide](pathname:///api/) to review the bundled OpenAPI snapshot and see how to use Swagger on your own Listenarr instance.
+Open the [API guide](/api/) to review the bundled OpenAPI snapshot and see how to use Swagger on your own Listenarr instance.

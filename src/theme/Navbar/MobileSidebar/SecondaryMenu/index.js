@@ -25,7 +25,12 @@ export default function NavbarMobileSidebarSecondaryMenu() {
   }
 
   return (
-    <ErrorCauseBoundary onError={() => new Error('The mobile secondary navbar menu failed to render.')}>
+    <ErrorCauseBoundary
+      onError={(error) =>
+        new Error('The mobile secondary navbar menu failed to render.', {
+          cause: error,
+        })
+      }>
       {!isPrimaryMenuEmpty && (
         <SecondaryMenuBackButton onClick={() => secondaryMenu.hide()} />
       )}
