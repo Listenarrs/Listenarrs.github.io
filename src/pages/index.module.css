@@ -633,36 +633,47 @@
     padding-top: 4rem;
   }
 
-  .heroCopy h1 {
-    max-width: unset;
-  }
-
   .heroInner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'lead'
+      'panel'
+      'actions';
     justify-items: center;
     text-align: center;
-    gap: 0;
+    gap: 1.5rem;
   }
 
   .heroCopy {
-    display: grid;
-    justify-items: center;
+    display: contents;
+  }
+
+  .heroCopy h1 {
+    grid-area: title;
+    max-width: unset;
+    margin-bottom: 0;
   }
 
   .heroLead {
+    grid-area: lead;
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
   }
 
   .heroActions {
+    grid-area: actions;
     justify-content: center;
+    margin-bottom: 0;
   }
 
   .heroPanel {
+    grid-area: panel;
     justify-self: center;
     width: 100%;
   }
 
-  .heroInner,
   .apiPanel,
   .cardGrid,
   .gallery {
@@ -676,6 +687,10 @@
 
   .featureCard {
     min-height: unset;
+  }
+
+  .discoveryOverlay {
+    background: linear-gradient(180deg, rgba(8, 12, 18, 0.4) 0%, rgba(8, 12, 18, 0.4) 35%, rgba(8, 12, 18, 0) 100%), linear-gradient(90deg, rgba(8, 12, 18, 0.2), rgba(8, 12, 18, 0));
   }
 
   .discoveryPanel {

@@ -475,14 +475,16 @@ table tr:nth-child(2n) {
   }
 
   .navbar-sidebar__items {
-    display: block;
+    display: flex;
     height: calc(100% - var(--ifm-navbar-height));
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   .navbar-sidebar__item {
-    width: 100%;
+    flex-shrink: 0;
+    width: calc(var(--ifm-navbar-sidebar-width));
     padding: 0.9rem;
+    overflow-y: auto;
   }
 
   .navbar-sidebar .menu__list {
